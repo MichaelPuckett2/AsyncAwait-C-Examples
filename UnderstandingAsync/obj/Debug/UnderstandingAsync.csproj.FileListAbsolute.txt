@@ -1,0 +1,14 @@
+C:\Users\Michael Puckett\AppData\Local\Temporary Projects\UnderstandingAsync\bin\Debug\UnderstandingAsync.exe.config
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\bin\Debug\UnderstandingAsync.exe.config
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.csprojResolveAssemblyReference.cache
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\MainWindow.baml
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\MainWindow.g.cs
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\App.g.cs
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync_MarkupCompile.cache
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.g.resources
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.Properties.Resources.resources
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.csproj.GenerateResource.Cache
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\bin\Debug\UnderstandingAsync.exe
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\bin\Debug\UnderstandingAsync.pdb
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.exe
+C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.pdb

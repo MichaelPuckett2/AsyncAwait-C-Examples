@@ -1,0 +1,36 @@
+﻿<Window x:Class="UnderstandingAsync.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Testing Async Await" Height="800" Width="1200" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button Name="String_WithAsynLabel" Content="String_WithAsynLabel" Click="String_WithAsynLabel_Click"/>
+        <Button Name="String_WithTaskRun" Content="** String_WithTaskRun" Grid.Column="1" Click="String_WithTaskRun_Click"/>
+        <Button Name="String_WithTaskFromResultAtReturn" Content="String_WithTaskFromResultAtReturn" Grid.Column="2" Click="String_WithTaskFromResultAtReturn_Click"/>
+        <Button Name="String_WithTaskFromResultAsWhole" Content="String_WithTaskFromResultAsWhole" Grid.Column="3" Click="String_WithTaskFromResultAsWhole_Click"/>
+        <Button Name="RunAll" Content="RunAll" Grid.Column="4" Click="RunAll_Click"/>
+        <StackPanel Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button Name="ClearList" Content="ClearList" Click="ClearList_Click"/>
+            <CheckBox Name="CheckBox_DisableButton" Content="Disable Button During Task" HorizontalAlignment="Center" Margin="0,7,0,0" IsChecked="True"/>
+            <Label Content="Sleep Time"/>
+            <TextBox x:Name="TextBox_SleepTime" Text="1000" TextChanged="TextBox_TextChanged"/>
+        </StackPanel>
+
+
+        <ListBox Name="ListBoxResults" Grid.Row="1" Grid.ColumnSpan="5"/>
+        <TextBlock Name="TextBlock_Timer" Text="Timer" Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,23,0,0" FontSize="20"/>
+
+    </Grid>
+</Window>
