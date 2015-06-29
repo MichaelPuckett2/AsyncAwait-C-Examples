@@ -21,34 +21,35 @@ namespace UnderstandingAsync
 
         static public async Task<String> String_WithAsynLabel()
         {
-            return SubTaskForTaskFromResult("String_WithAsynLabel");
+            return await SubTaskForTaskFromResult("String_WithAsynLabel");
         }
 
         static async public Task<String> String_WithTaskFromResultAsWhole()
         {
-            return await Task.FromResult<String>(SubTaskForTaskFromResult("String_WithTaskFromResultAsWhole"));
+            return await Task.FromResult<String>(await SubTaskForTaskFromResult("String_WithTaskFromResultAsWhole"));
         }
 
         
-        static public Task<String> String_WithTaskRun() //This is the only task that appears to work as it should.
+        static public async Task<String> String_WithTaskRun() //This is the only task that appears to work as it should.
         {
-            return Task.Run<String>(() =>
+            //This method actually runs on a background thread where the others are continuations of the main thread. !!Important
+            return await Task.Run<String>(async () =>
             {
-                return SubTaskForTaskFromResult("String_WithTaskRun");            
+                return await SubTaskForTaskFromResult("String_WithTaskRun");            
             });
         }
 
-        static public Task<String> String_WithTaskFromResultAtReturn()
+        static public async Task<String> String_WithTaskFromResultAtReturn()
         {
-            System.Threading.Thread.Sleep(sleepTime);
-
-            return Task.FromResult<String>(SubTaskForTaskFromResult("String_WithTaskFromResultAtReturn"));
+            return await Task.FromResult<String>(await SubTaskForTaskFromResult("String_WithTaskFromResultAtReturn"));
         }
 
       
-        static private String SubTaskForTaskFromResult(String taskName)
+        static private async Task<String> SubTaskForTaskFromResult(String taskName)
         {
-            System.Threading.Thread.Sleep(sleepTime);
+            //System.Threading.Thread.Sleep(sleepTime);  //When sleeping here the only time it works is if we use the background thread. ... Task.Run(..
+
+            await Task.Delay(sleepTime);  //When sleeping here all methods continue because this sleeps on a background thread I'm assuming.
 
             return String.Format("Task {0}:  {1}",
                 ++TaskCounter,
