@@ -12,3 +12,16 @@ C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsyn
 C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\bin\Debug\UnderstandingAsync.pdb
 C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.exe
 C:\Users\Michael Puckett\Documents\Visual Studio 2013\Projects\UnderstandingAsync\UnderstandingAsync\obj\Debug\UnderstandingAsync.pdb
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\bin\Debug\UnderstandingAsync.exe.config
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\bin\Debug\UnderstandingAsync.exe
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\bin\Debug\UnderstandingAsync.pdb
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync.csprojResolveAssemblyReference.cache
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\MainWindow.baml
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\MainWindow.g.cs
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\App.g.cs
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync_MarkupCompile.cache
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync.g.resources
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync.Properties.Resources.resources
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync.csproj.GenerateResource.Cache
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync.exe
+C:\Users\micha\Repos\AsyncAwait-C-Examples\UnderstandingAsync\obj\Debug\UnderstandingAsync.pdb

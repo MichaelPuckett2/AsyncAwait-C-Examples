@@ -13,15 +13,13 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Button Name="String_WithAsynLabel" Content="String_WithAsynLabel" Click="String_WithAsynLabel_Click"/>
-        <Button Name="String_WithTaskRun" Content="** String_WithTaskRun" Grid.Column="1" Click="String_WithTaskRun_Click"/>
-        <Button Name="String_WithTaskFromResultAtReturn" Content="String_WithTaskFromResultAtReturn" Grid.Column="2" Click="String_WithTaskFromResultAtReturn_Click"/>
-        <Button Name="String_WithTaskFromResultAsWhole" Content="String_WithTaskFromResultAsWhole" Grid.Column="3" Click="String_WithTaskFromResultAsWhole_Click"/>
-        <Button Name="RunAll" Content="RunAll" Grid.Column="4" Click="RunAll_Click"/>
-        <StackPanel Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Button Name="String_WithTaskRun" Content="** String_WithTaskRun" Grid.Column="1" Click="String_WithTaskRun_Click"/>      
+        <Button Name="String_WithTaskFromResultAsWhole" Content="String_WithTaskFromResultAsWhole" Grid.Column="2" Click="String_WithTaskFromResultAsWhole_Click"/>
+        <Button Name="RunAll" Content="RunAll" Grid.Column="3" Click="RunAll_Click"/>
+        <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Button Name="ClearList" Content="ClearList" Click="ClearList_Click"/>
             <CheckBox Name="CheckBox_DisableButton" Content="Disable Button During Task" HorizontalAlignment="Center" Margin="0,7,0,0" IsChecked="True"/>
             <Label Content="Sleep Time"/>
