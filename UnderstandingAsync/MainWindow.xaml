@@ -1,11 +1,9 @@
 ﻿<Window x:Class="UnderstandingAsync.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Testing Async Await"
+        Title="Async Await"
         Height="800"
-        Width="1200"
-        Loaded="Window_Loaded"
-        Closing="Window_Closing">
+        Width="1200">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,22 +15,22 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Name="button1"
+        <Button Name="StringTaskButton"
                 Content="Task"
-                Click="StrinTask_Click" />
-        
-        <Button Name="button2"
+                Click="buttonClick" />
+
+        <Button Name="AsyncStringTaskButton"
                 Content="Async Task"
                 Grid.Column="1"
-                Click="AsyncStringTask_Click" />
-        
-        <Button Name="button3"
+                Click="buttonClick" />
+
+        <Button Name="TaskDotRunButton"
                 Content="Task.Run"
                 Grid.Column="2"
-                Click="StringTaskDotRun_Click" />
+                Click="buttonClick" />
 
         <Button Name="RunAll"
                 Content="RunAll"
@@ -42,8 +40,7 @@
         <StackPanel Grid.Column="4"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            <Button Name="ClearList"
-                    Content="ClearList"
+            <Button Content="ClearList"
                     Click="ClearList_Click" />
             <CheckBox Name="CheckBox_DisableButton"
                       Content="Disable Button During Task"
@@ -52,21 +49,48 @@
                       IsChecked="True" />
             <Label Content="Sleep Time" />
             <TextBox x:Name="TextBox_SleepTime"
-                     Text="1000"
                      TextChanged="TextBox_TextChanged" />
         </StackPanel>
 
         <ListBox Name="ListBoxResults"
                  Grid.Row="1"
-                 Grid.ColumnSpan="5" />
-        <TextBlock Name="TextBlock_Timer"
-                   Text="Timer"
-                   Grid.Row="1"
-                   Grid.Column="6"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Margin="0,23,0,0"
-                   FontSize="20" />
+                 Grid.ColumnSpan="4" />
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="4"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top">
+
+            <TextBlock Name="TextBlock_Timer"
+                       Text="Timer"
+                       Margin="0,23,0,0"
+                       FontSize="40"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" />
+
+            <ProgressBar Height="7"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Top"
+                         IsIndeterminate="True" />
+
+            <TextBlock TextWrapping="Wrap">
+                <Run Text="This app is an example only for helping to understand the right and wrong way to use async await." />
+                <LineBreak />
+                <Run Text="The app should perform like so for the first two buttons:" />
+                 <LineBreak />
+                <Run Text="Pause UI thread." />
+                 <LineBreak />
+                <Run Text="Disable button and wait for paused background thread." />
+                 <LineBreak />
+                <Run Text="Pause UI thread again." />
+                 <LineBreak />
+                <Run Text="Re-enable button." />
+                 <LineBreak />
+                <Run Text="The third button, Task.Run, is what we want to happen all the time.  It doesn't stop the UI at all while processing." />
+                 <LineBreak />
+                <Run Text="All calls are essentially the same with the only difference, Task.Run, actually awaits a new thread (Task) while freeing up the UI." />
+            </TextBlock>
+        </StackPanel>
 
     </Grid>
 </Window>

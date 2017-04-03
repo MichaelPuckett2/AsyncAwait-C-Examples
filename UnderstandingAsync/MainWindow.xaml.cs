@@ -1,64 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace UnderstandingAsync
-{  
+{
     public partial class MainWindow : Window
     {
+        private const int DefaultSleepTime = 3000;
+        System.Timers.Timer timer = new System.Timers.Timer(10);
+
         public MainWindow()
         {
             InitializeComponent();
-            timer.Elapsed += timer_Elapsed;
+
+            TextBox_SleepTime.Text = DefaultSleepTime.ToString();
+
+            initializeTimer();          
         }
 
-        private const int DefaultSleeptTime = 1000;
-        System.Timers.Timer timer = new System.Timers.Timer(10);
-
-        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void initializeTimer()
         {
-            DateTime now = DateTime.Now;
-            Application.Current.Dispatcher.Invoke(() => TextBlock_Timer.Text = $"{now.Second}.{now.Millisecond}");
+            timer = new System.Timers.Timer(10);
+
+            timer.Elapsed += (s, e) =>
+            {
+                DateTime now = DateTime.Now;
+                Application.Current.Dispatcher.Invoke(() => TextBlock_Timer.Text = $"{now.Second}.{now.Millisecond}");
+            };
+
+            Loaded += (s, e) => timer.Start();
+            Closing += (s, e) => timer.Stop();
         }
 
-        private async void StrinTask_Click(object sender, RoutedEventArgs e)
+        private async void buttonClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
 
             if ((CheckBox_DisableButton.IsChecked).GetValueOrDefault())
                 button.IsEnabled = false;
 
-            ListBoxResults.Items.Add(await TaskExamples.StringTask());
+            var result = string.Empty;
+
+            switch (button.Name)
+            {
+                case nameof(StringTaskButton):
+                    result = await TaskExamples.StringTask();
+                    break;
+
+                case nameof(AsyncStringTaskButton):
+                    result = await TaskExamples.AsyncStringTask();
+                    break;
+
+                case nameof(TaskDotRunButton):
+                    result = await TaskExamples.StringTaskDotRunAsync();
+                    break;
+
+                default:
+                    result = "No Result Found";
+                    break;
+
+            }
+
+            ListBoxResults.Items.Add(result);
 
             button.IsEnabled = true;
-        }
-
-        private async void AsyncStringTask_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            if (CheckBox_DisableButton.IsChecked.GetValueOrDefault())
-                button.IsEnabled = false;
-
-            ListBoxResults.Items.Add(await TaskExamples.AsyncStringTask());
-
-            button.IsEnabled = true;
-        }
-
-        private async void StringTaskDotRun_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-
-            if (CheckBox_DisableButton.IsChecked.GetValueOrDefault())
-                button.IsEnabled = false;
-
-            ListBoxResults.Items.Add(await TaskExamples.StringTaskDotRun());
-
-            button.IsEnabled = true;
-        }
+        }    
 
         private async void RunAll_Click(object sender, RoutedEventArgs e)
         {
@@ -70,15 +78,16 @@ namespace UnderstandingAsync
             var tasks = new List<Task<string>>()
             {
                 TaskExamples.StringTask(),
-                TaskExamples.StringTaskDotRun(),
+                TaskExamples.StringTaskDotRunAsync(),
                 TaskExamples.AsyncStringTask()
             };
 
+            //Comment out here and foreach and uncomment tasks.ForEach.  The lambda expression gets returned to each call immediately and the ForEach becomes asynchronous.
+            //The reason is there is no overload of ForEach that will return task such as ForEachAsync; that can be awaited.
+            await Task.WhenAll(tasks);
+
             foreach (var task in tasks)
-            {
-                var str = await task;
-                ListBoxResults.Items.Add(str);
-            }
+                ListBoxResults.Items.Add(task.Result);
 
             /* The ForEach lambda expression required it's own async / await as shown below.
             * If you uncomment the line below and comment out the foreach (var task...) above then you'll notice the button
@@ -93,30 +102,14 @@ namespace UnderstandingAsync
         private void ClearList_Click(object sender, RoutedEventArgs e)
             => ListBoxResults.Items.Clear();
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-            => timer.Start();
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            timer.Stop();
-            Thread.Sleep(200);
-        }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int? sleepTime;
-
-            try
-            {
+            if (int.TryParse(TextBox_SleepTime.Text, out int sleepTime))
                 sleepTime = Convert.ToInt32(TextBox_SleepTime.Text);
-            }
-            catch
-            {
-                TextBox_SleepTime.Text = DefaultSleeptTime.ToString();
-                sleepTime = null;
-            }
+            else
+                sleepTime = DefaultSleepTime;
 
-            TaskExamples.SleepTime = sleepTime ?? DefaultSleeptTime;
+            TaskExamples.SleepTime = sleepTime;
         }
     }
 }
