@@ -8,14 +8,13 @@ namespace UnderstandingAsync
 {
     public partial class MainWindow : Window
     {
-        private const int DefaultSleepTime = 3000;
         System.Timers.Timer timer = new System.Timers.Timer(10);
 
         public MainWindow()
         {
             InitializeComponent();
 
-            TextBox_SleepTime.Text = DefaultSleepTime.ToString();
+            TextBox_SleepTime.Text = TaskExamples.SleepTime.ToString();
 
             initializeTimer();          
         }
@@ -105,11 +104,9 @@ namespace UnderstandingAsync
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (int.TryParse(TextBox_SleepTime.Text, out int sleepTime))
-                sleepTime = Convert.ToInt32(TextBox_SleepTime.Text);
+                TaskExamples.SleepTime = Convert.ToInt32(TextBox_SleepTime.Text);
             else
-                sleepTime = DefaultSleepTime;
-
-            TaskExamples.SleepTime = sleepTime;
+                TextBox_SleepTime.Text = TaskExamples.DefaultSleepTime.ToString();
         }
     }
 }

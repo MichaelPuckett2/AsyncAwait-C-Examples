@@ -6,7 +6,8 @@ namespace UnderstandingAsync
     static public class TaskExamples
     {
         static int TaskCounter = 0;
-        static int sleepTime = 1000;
+        public const int DefaultSleepTime = 3000;
+        static int sleepTime = DefaultSleepTime;
 
         static public int SleepTime
         {
